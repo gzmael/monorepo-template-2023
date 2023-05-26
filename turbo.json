@@ -1,0 +1,66 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [".env.local"],
+  "globalEnv": ["NEXT_PUBLIC_VERCEL_URL"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build", "database#db:generate"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "env": [
+        "NEXT_PUBLIC_VERCEL_URL",
+        "NEXT_PUBLIC_RESEND_API_KEY",
+        "NEXT_PUBLIC_INTER_CLIENT_ID",
+        "NEXT_PUBLIC_INTER_CLIENT_SECRET",
+        "NEXT_PUBLIC_MAILING_API_KEY",
+        "NEXT_PUBLIC_ANALYTICS_ID",
+        "NEXT_PUBLIC_RECAPTCHA_SECRET",
+        "NEXT_PUBLIC_RECAPTCHA",
+        "NEXT_PUBLIC_GOOGLE_MAPS",
+        "NEXT_PUBLIC_MAP_BOX_TOKEN",
+        "DATABASE_URL"
+      ]
+    },
+    "database#db:generate": {
+      "cache": false,
+      "env": [
+        "DATABASE_URL",
+        "DIRECT_URL",
+        "SHADOW_DATABASE_URL"
+      ]
+    },
+    "database#db:push": {
+      "cache": false,
+      "env": [
+        "DATABASE_URL",
+        "DIRECT_URL",
+        "SHADOW_DATABASE_URL"
+      ]
+    },
+    "database#migrate": {
+      "cache": false,
+      "env": [
+        "DATABASE_URL",
+        "DIRECT_URL",
+        "SHADOW_DATABASE_URL"
+      ]
+    },
+    "database#deploy": {
+      "cache": false,
+      "env": [
+        "DATABASE_URL",
+        "DIRECT_URL",
+        "SHADOW_DATABASE_URL"
+      ]
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

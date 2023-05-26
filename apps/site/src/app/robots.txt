@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+
+# Host
+Host: https://baita.dev.br
+
+# Sitemaps
+Sitemap: https://baita.dev.br/sitemap.xml

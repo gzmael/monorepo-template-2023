@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "dotenv -e .env.local -- turbo run dev",
+    "lint": "turbo run lint",
+    "migrate": "dotenv -e .env.local -- turbo run migrate",
+    "deploy": "dotenv -e .env.local -- turbo run deploy",
+    "prepare": "husky install",
+    "commit": "git-cz"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "dotenv-cli": "^7.1.0",
+    "eslint": "^7.16.0",
+    "eslint-config-nextjs": "*",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "prettier": "latest",
+    "prettier-plugin-tailwindcss": "^0.2.6",
+    "turbo": "^1.9.3"
+  },
+  "packageManager": "npm@8.19.4",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
